@@ -1,0 +1,106 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #172a27;
+  background: #eef3ef;
+  --ink-muted: #49605a;
+  --line: #d4dfd9;
+  --primary: #0e5d4e;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; width: 758px; max-width: 100vw; }
+.full-view body { width: auto; }
+.dashboard { margin: 0 auto; padding: 22px; max-width: 1160px; }
+.full-view .dashboard { padding: 46px 38px; }
+.top, .brand, .actions, .result-heading { display: flex; align-items: center; }
+.top, .result-heading { justify-content: space-between; gap: 16px; }
+.brand, .actions { gap: 10px; }
+.brand img { flex: none; }
+h1 { font-size: 21px; margin: 0 0 2px; letter-spacing: -0.035em; line-height: 1.15; }
+.full-view h1 { font-size: 30px; }
+p { margin: 0; }
+#profile-label { color: var(--ink-muted); font-size: 12px; }
+button {
+  border: 1px solid #bdcfc7;
+  background: #fff;
+  color: #1d3a32;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+button:hover:not(:disabled) { background: #e5f2ec; }
+button.primary { background: var(--primary); border-color: var(--primary); color: white; }
+button.primary:hover:not(:disabled) { background: #08483d; }
+button:disabled { cursor: default; opacity: .55; }
+button:focus-visible, a:focus-visible { outline: 2px solid #065f84; outline-offset: 2px; }
+.summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 22px 0 14px; }
+.metric {
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--metric, #829597);
+  border-radius: 10px;
+  background: #fff;
+}
+.metric dt { font-size: 12px; font-weight: 650; color: var(--ink-muted); }
+.metric dd { margin: 1px 0 0; font-size: 25px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.risk { --metric: #b9473a; --tag-bg: #fceae4; --tag-fg: #843626; }
+.edit { --metric: #a86510; --tag-bg: #fff0cf; --tag-fg: #6d4706; }
+.okay { --metric: #308968; --tag-bg: #e4f4ea; --tag-fg: #17573f; }
+.unknown { --metric: #8c9c9f; --tag-bg: #eaf0f2; --tag-fg: #425962; }
+.results {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  margin-top: 18px;
+  overflow: hidden;
+}
+#dashboard-results:not([hidden]) + .results { margin-top: 0; }
+.result-heading { padding: 11px 13px; }
+#progress { font-size: 12px; font-weight: 600; color: var(--ink-muted); line-height: 1.45; }
+.table-container { overflow: auto; max-height: 320px; }
+.full-view .table-container { max-height: max(320px, calc(100vh - 325px)); }
+table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 12px; }
+th, td { padding: 10px 8px; border-top: 1px solid #dfebe4; text-align: left; }
+th:first-child, td:first-child { padding-left: 13px; }
+th:last-child, td:last-child { padding-right: 13px; }
+th {
+  position: sticky;
+  top: 0;
+  background: #f3f7f4;
+  color: #425a51;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.number { text-align: right; font-variant-numeric: tabular-nums; }
+th, td { vertical-align: middle; }
+tbody tr:hover { background: #f6faf7; }
+a { color: #0a594a; text-decoration-thickness: 1px; text-underline-offset: 2px; font-weight: 650; }
+.model-cell { min-width: 125px; overflow-wrap: anywhere; }
+.badges { display: flex; gap: 4px; flex-wrap: wrap; }
+.badge {
+  white-space: nowrap;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  border-radius: 20px;
+  padding: 3px 7px;
+  font-size: 11px;
+  font-weight: 680;
+}
+.row-note { color: var(--ink-muted); margin-top: 4px; font-size: 11px; }
+footer { margin: 12px 1px 0; color: var(--ink-muted); font-size: 11px; line-height: 1.5; }
+.full-view th, .full-view td { padding: 12px; }
+.full-view table { font-size: 14px; }
+.full-view .metric { padding: 14px 16px; }
+@media (max-width: 680px) {
+  .full-view .dashboard, .dashboard { padding: 13px; }
+  .top { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .full-view h1 { font-size: 21px; }
+  .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo Audit for MakerWorld</title>
+  <link rel="stylesheet" href="audit.css">
+  <script type="module" src="audit.js"></script>
+</head>
+<body>
+  <main class="dashboard">
+    <header class="top">
+      <div class="brand">
+        <img src="icons/audit-48.png" alt="" width="42" height="42">
+        <div>
+          <h1>Photo Audit for MakerWorld</h1>
+          <p id="profile-label">Public model photos</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="full-view" hidden>Open in tab</button>
+        <button type="button" id="models-tab" hidden>Open Models</button>
+        <button type="button" class="primary" id="scan" disabled>Scan models</button>
+      </div>
+    </header>
+    <section id="dashboard-results" aria-label="Audit results" hidden>
+      <dl class="summary">
+        <div class="metric risk"><dt>Cover risk</dt><dd id="count-cover">0</dd></div>
+        <div class="metric edit"><dt>Edit-blocked</dt><dd id="count-edit">0</dd></div>
+        <div class="metric okay"><dt>OK</dt><dd id="count-ok">0</dd></div>
+        <div class="metric unknown"><dt>Unverified</dt><dd id="count-unknown">0</dd></div>
+      </dl>
+    </section>
+    <div class="results">
+      <div class="result-heading">
+        <p id="progress" role="status" aria-live="polite">Open a MakerWorld profile and select Models.</p>
+        <button type="button" id="export" disabled>Export CSV</button>
+      </div>
+      <div class="table-container" id="table-container" hidden>
+        <table aria-label="Model photo audit">
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th class="number" scope="col">Photos</th>
+              <th class="number" scope="col">Real-life</th>
+              <th scope="col">Cover flag</th>
+              <th class="number" scope="col">Downloads</th>
+              <th class="number" scope="col" id="points-heading" hidden>Points</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+    <footer>
+      <p>Cover risk means the cover lacks a real-life flag. Edit-blocked means the gallery has fewer than 3 marked real-life photos. Check the model before making changes.</p>
+    </footer>
+  </main>
+</body>
+</html>

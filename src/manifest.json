@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Photo Audit for MakerWorld",
+  "version": "1.0.0",
+  "description": "Check MakerWorld model cover flags and real-life photo counts. Find cover risks, flag edits that may be blocked, and export CSV.",
+  "host_permissions": [
+    "https://makerworld.com/*",
+    "https://api.bambulab.com/*"
+  ],
+  "icons": {
+    "16": "icons/audit-16.png",
+    "32": "icons/audit-32.png",
+    "48": "icons/audit-48.png",
+    "128": "icons/audit-128.png"
+  },
+  "action": {
+    "default_popup": "audit.html",
+    "default_title": "Photo Audit for MakerWorld"
+  },
+  "background": {
+    "service_worker": "worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://makerworld.com/@*", "https://makerworld.com/*/@*"],
+      "js": ["profile.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

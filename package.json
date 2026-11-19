@@ -1,0 +1,16 @@
+{
+  "name": "makerworld-photo-audit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:browser": "node test/browser.js",
+    "package": "sh scripts/package.sh",
+    "assets": "node scripts/store-assets.js"
+  },
+  "devDependencies": {
+    "playwright": "1.65.1"
+  }
+}

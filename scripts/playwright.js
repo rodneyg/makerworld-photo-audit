@@ -1,0 +1,4 @@
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+export const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');

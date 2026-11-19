@@ -1,0 +1,69 @@
+{
+  "dualRisk": {
+    "id": 1001,
+    "title": "Workbench cable guide",
+    "coverUrl": "https://makerworld.bblmw.com/model/a/cover.jpg?x-oss-process=image/resize,w_1280",
+    "downloadCount": 1204,
+    "designCreator": { "handle": "ExampleStudio" },
+    "designExtension": {
+      "design_pictures": [
+        { "url": "https://makerworld.bblmw.com/model/a/cover.jpg", "isRealLifePhoto": 0 },
+        { "url": "https://makerworld.bblmw.com/model/a/side.jpg", "isRealLifePhoto": 1 }
+      ],
+      "real_pictures": [
+        { "url": "https://makerworld.bblmw.com/model/a/side.jpg@400w", "isRealLifePhoto": 1 }
+      ],
+      "design_guide": [{ "url": "https://makerworld.bblmw.com/model/a/guide.pdf" }]
+    },
+    "instances": [{ "pictures": [
+      { "url": "https://makerworld.bblmw.com/model/a/profile-front.jpg", "isRealLifePhoto": 1 },
+      { "url": "https://makerworld.bblmw.com/model/a/profile-back.jpg", "isRealLifePhoto": 1 }
+    ] }]
+  },
+  "coverRisk": {
+    "id": 1002,
+    "title": "Stackable parts trays",
+    "coverUrl": "https://makerworld.bblmw.com/model/b/render.jpg",
+    "downloadCount": 2781,
+    "designCreator": { "handle": "ExampleStudio" },
+    "designExtension": {
+      "design_pictures": [
+        { "url": "https://makerworld.bblmw.com/model/b/render.jpg", "isRealLifePhoto": 0 },
+        { "url": "https://makerworld.bblmw.com/model/b/top.jpg", "isRealLifePhoto": 1 },
+        { "url": "https://makerworld.bblmw.com/model/b/side.jpg", "isRealLifePhoto": 1 },
+        { "url": "https://makerworld.bblmw.com/model/b/detail.jpg", "isRealLifePhoto": 1 }
+      ]
+    }
+  },
+  "editBlocked": {
+    "id": 1003,
+    "title": "Desk drawer dividers",
+    "coverUrl": "https://makerworld.bblmw.com/model/c/front.jpg",
+    "downloadCount": 914,
+    "designCreator": { "handle": "ExampleStudio" },
+    "designExtension": { "design_pictures": [
+      { "url": "https://makerworld.bblmw.com/model/c/front.jpg", "isRealLifePhoto": 1 },
+      { "url": "https://makerworld.bblmw.com/model/c/side.jpg", "isRealLifePhoto": 1 }
+    ] }
+  },
+  "ok": {
+    "id": 1004,
+    "title": "Pegboard caliper holder",
+    "coverUrl": "https://makerworld.bblmw.com/model/d/front.jpg",
+    "downloadCount": 1480,
+    "designCreator": { "handle": "ExampleStudio" },
+    "pictures": [
+      { "url": "https://makerworld.bblmw.com/model/d/front.jpg", "isRealLifePhoto": true },
+      { "url": "https://makerworld.bblmw.com/model/d/side.jpg", "isRealLifePhoto": "1" },
+      { "url": "https://makerworld.bblmw.com/model/d/back.jpg", "isRealLifePhoto": 1 }
+    ]
+  },
+  "unknown": {
+    "id": 1005,
+    "title": "Garden label set",
+    "coverUrl": "https://makerworld.bblmw.com/model/e/front.jpg",
+    "downloadCount": 638,
+    "designCreator": { "handle": "ExampleStudio" },
+    "instances": [{ "pictures": [{ "url": "https://makerworld.bblmw.com/model/e/profile.jpg", "isRealLifePhoto": 1 }] }]
+  }
+}
