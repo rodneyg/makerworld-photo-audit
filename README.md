@@ -19,14 +19,14 @@ Live verification of the profile's HTML and XHR was blocked by Cloudflare in hea
 
 The extension requests `GET https://api.bambulab.com/v1/design-service/design/{id}?visitHistory=false` anonymously, one request at a time, with at least 450 ms between requests. Successful rows are cached locally and reused for 15 minutes. An HTTP 429 stops the scan and honors the retry window.
 
-Live responses expose `id`, `title`, `designCreator.handle`, `coverUrl`, `downloadCount`, and the design gallery at `designExtension.design_pictures` and `designExtension.real_pictures`. Gallery entries have `url` and numeric `isRealLifePhoto` flags. The extension deduplicates the same photo across fields, checks the cover by URL, and excludes print-profile photos under `instances[].pictures`. A standalone cover does not add a gallery photo. Points appear when the response exposes a numeric `points` or `pointCount` field. The live samples did not expose either. [Sample public design API response](https://api.bambulab.com/v1/design-service/design/544229?visitHistory=false)
+Live responses expose `id`, `title`, `designCreator.handle`, `coverUrl`, `downloadCount`, and the design gallery at `designExtension.design_pictures` and `designExtension.real_pictures`. Gallery entries have `url` and numeric `isRealLifePhoto` flags. The extension deduplicates the same photo across fields, checks the cover by URL, and excludes print-profile photos under `instances[].pictures`. Total photos includes the cover once, even when the cover is separate from the gallery. Real-life photo counts use the gallery. A separate cover can carry no real-life marker even when gallery photos are marked. In that case the cover flag is Unknown. Points appear when the response exposes a numeric `points` or `pointCount` field. The live samples did not expose either. [Sample public design API response](https://api.bambulab.com/v1/design-service/design/544229?visitHistory=false)
 
-- **Cover risk** means the cover lacks a real-life flag in the available metadata.
-- **Edit-blocked** means fewer than three gallery photos are marked real-life. This flag estimates the photo count check before a cover edit.
+- **Cover risk** means the cover is explicitly flagged as unmarked in the available metadata.
+- **Edit-blocked** means the available gallery flags establish that fewer than three photos can be marked real-life. This flag estimates the photo count check before a cover edit.
 - **OK** means the cover is marked and at least three gallery photos are marked real-life.
 - **Unverified** means there is too little metadata to classify the model.
 
-A model with both flags appears under **Cover risk** and shows an additional **Edit-blocked** badge. Each model contributes once to the summary. The audit reads labels. Review flagged models to confirm the cover shows the complete print and matches the files. The three-photo upload rule and review period for older covers are described in MakerWorld's announcement. [MakerWorld announcement](https://makerworld.com/en/community/post/1934883), [Bambu Lab forum discussion](https://forum.bambulab.com/t/263032)
+A model with both findings appears under **Edit-blocked** and shows its cover flag in the Cover flag column. The summary, table, and CSV use the same primary status. The audit reads labels. Review flagged models to confirm the cover shows the complete print and matches the files. The three-photo upload rule and review period for older covers are described in MakerWorld's announcement. [MakerWorld announcement](https://makerworld.com/en/community/post/1934883), [Bambu Lab forum discussion](https://forum.bambulab.com/t/263032)
 
 ## Test and package
 

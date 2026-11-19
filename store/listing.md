@@ -10,9 +10,9 @@ Check MakerWorld model cover flags and real-life photo counts. Find cover risks,
 
 ## Long description
 
-Open the Models tab of a public MakerWorld profile and scan its model photos. See which covers lack a real-life flag, how many gallery photos MakerWorld marks as real-life, and which cover edits may be blocked by the three-photo check.
+Open the Models tab of a public MakerWorld profile and scan its model photos. See which covers MakerWorld explicitly flags as unmarked, how many gallery photos MakerWorld marks as real-life, and which cover edits may be blocked by the three-photo check.
 
-- See cover risks first, with model links and public download or point counts where available.
+- See edit-blocked models and cover risks first, with model links and public download or point counts where available.
 - Export your results as a CSV.
 - Open the audit in a tab to keep it handy while paging through models.
 

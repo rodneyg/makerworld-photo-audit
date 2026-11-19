@@ -138,6 +138,9 @@ async function runProfile(worker, item) {
       id: Number(row.dataset.id), status: row.dataset.status, editBlocked: Boolean(row.dataset.editBlocked),
       title: row.querySelector('a').textContent, note: row.querySelector('.row-note')?.textContent ?? null
     })));
+    assert.deepEqual(await dashboard.locator('#rows tr').evaluateAll(entries =>
+      entries.map(row => [...row.querySelectorAll('.badge')].map(badge => badge.textContent))
+    ), rows.map(row => [row.status]));
     const counts = Object.fromEntries(fields.map(value => [value, rows.filter(row => row.status === value).length]));
     for (const [key, field] of Object.entries({ cover: fields[0], edit: fields[1], ok: fields[2], unknown: fields[3] })) {
       assert.equal(Number(await dashboard.locator('#count-' + key).textContent()), counts[field]);
@@ -153,7 +156,18 @@ async function runProfile(worker, item) {
     await (await downloaded).saveAs(resolve(evidence, fileName));
     const csv = await readFile(resolve(evidence, fileName), 'utf8');
     assert.ok(csv.startsWith('\uFEFF"Model","Link","Total photos","Real-life photos"'));
-    for (const row of rows) assert.match(csv, new RegExp(`/models/${row.id}(?:-|")`));
+    for (const row of rows) {
+      const line = csv.split('\r\n').find(line => new RegExp(`/models/${row.id}(?:-|")`).test(line));
+      assert.ok(line, `Missing CSV row for ${row.id}`);
+      assert.ok(line.includes(`,"${row.status}","${row.editBlocked ? 'Yes' : 'No'}",`)
+        || (!row.editBlocked && line.includes(`,"${row.status}","Unknown",`)), line);
+    }
+    if (mode === 'store') {
+      const cover = dashboard.locator('#rows tr[data-id="1006"]');
+      assert.equal(await cover.locator('td').nth(1).textContent(), '4');
+      assert.equal(await cover.locator('td').nth(3).textContent(), 'Unknown');
+      assert.match(csv, /"4","3","Unknown","2048","","Unverified","No",""/);
+    }
 
     const screenshot = mode === 'store' ? resolve(evidence, 'screenshot-1280x800.png') : resolve(evidence, `${mode}-${slug}.png`);
     await dashboard.screenshot({ path: screenshot, animations: 'disabled' });
@@ -187,8 +201,8 @@ try {
       return route.fulfill({ json: data });
     });
     const sample = await runProfile(worker, item);
-    assert.deepEqual(sample.counts, { 'Cover risk': 2, 'Edit-blocked': 1, 'OK': 1, 'Unverified': 1 });
-    assert.deepEqual(sample.rows.map(row => row.id), [1001, 1002, 1003, 1005, 1004]);
+    assert.deepEqual(sample.counts, { 'Cover risk': 1, 'Edit-blocked': 2, 'OK': 1, 'Unverified': 2 });
+    assert.deepEqual(sample.rows.map(row => row.id), [1001, 1003, 1002, 1006, 1005, 1004]);
     results.push(sample);
   } else {
     for (const item of profiles) {

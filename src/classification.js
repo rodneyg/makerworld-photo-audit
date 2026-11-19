@@ -5,7 +5,7 @@ export const Status = Object.freeze({
   OK: 'OK'
 });
 
-const order = [Status.COVER, Status.EDIT, Status.UNKNOWN, Status.OK];
+const order = [Status.EDIT, Status.COVER, Status.UNKNOWN, Status.OK];
 
 function imageKey(value) {
   if (typeof value !== 'string' || !value.trim()) return null;
@@ -50,7 +50,6 @@ export function classifyDesign(design) {
   const coverKey = imageKey(design.coverUrl);
   const coverMarked = coverKey
     ? photos.get(coverKey) ?? flag(design.isRealLifePhoto)
-      ?? (complete && !photos.has(coverKey) ? false : null)
     : null;
   const values = [...photos.values()];
   const markedCount = values.filter(value => value === true).length;
@@ -59,15 +58,15 @@ export function classifyDesign(design) {
     : complete && markedCount + unmarkedCount < 3 ? true : null;
 
   let status = Status.UNKNOWN;
-  if (coverMarked === false) status = Status.COVER;
-  else if (editBlocked === true) status = Status.EDIT;
+  if (editBlocked === true) status = Status.EDIT;
+  else if (coverMarked === false) status = Status.COVER;
   else if (coverMarked === true && editBlocked === false) status = Status.OK;
 
   return {
     id: design.id,
     title: design.title?.trim() || '',
     handle: typeof design.designCreator?.handle === 'string' ? design.designCreator.handle : null,
-    totalPhotos: complete ? photos.size : null,
+    totalPhotos: complete ? photos.size + Number(coverKey !== null && !photos.has(coverKey)) : null,
     realPhotos: complete && !unmarkedCount ? markedCount : null,
     knownRealPhotos: markedCount,
     coverMarked,
@@ -80,7 +79,6 @@ export function classifyDesign(design) {
 
 export function compareRows(a, b) {
   return order.indexOf(a.status) - order.indexOf(b.status)
-    || Number(b.editBlocked === true) - Number(a.editBlocked === true)
     || (b.downloads ?? -1) - (a.downloads ?? -1)
     || a.title.localeCompare(b.title)
     || String(a.id).localeCompare(String(b.id), undefined, { numeric: true });

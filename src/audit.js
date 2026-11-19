@@ -82,11 +82,7 @@ function render() {
     valueCell(tr, coverLabel(row));
     valueCell(tr, row.downloads, true);
     if (showPoints) valueCell(tr, row.points, true);
-    const badges = document.createElement('span');
-    badges.className = 'badges';
-    badges.append(badge(row.status));
-    if (row.status === Status.COVER && row.editBlocked === true) badges.append(badge(Status.EDIT));
-    tr.insertCell().append(badges);
+    tr.insertCell().append(badge(row.status));
     body.append(tr);
   }
 
