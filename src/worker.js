@@ -1,6 +1,6 @@
 import { classifyDesign } from './classification.js';
 
-const CACHE_NAME = 'design-audit-v1';
+const CACHE_NAME = 'design-audit-v2';
 const CACHE_TIME = 15 * 60_000;
 const CACHE_LIMIT = 750;
 const REQUEST_GAP = 450;

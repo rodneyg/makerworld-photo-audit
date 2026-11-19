@@ -6,7 +6,8 @@ staging=$(mktemp -d)
 trap 'rm -rf "$staging"' EXIT HUP INT TERM
 cp -R src/. "$staging/"
 cp LICENSE "$staging/"
-archive="$(pwd)/dist/makerworld-photo-audit-1.0.0.zip"
+version=$(node -p "require('./src/manifest.json').version")
+archive="$(pwd)/dist/makerworld-photo-audit-$version.zip"
 (
   cd "$staging"
   zip -q -X -r extension.zip . -x '.*' '*/.*'

@@ -65,5 +65,17 @@
     "downloadCount": 638,
     "designCreator": { "handle": "ExampleStudio" },
     "instances": [{ "pictures": [{ "url": "https://makerworld.bblmw.com/model/e/profile.jpg", "isRealLifePhoto": 1 }] }]
+  },
+  "standaloneCover": {
+    "id": 1006,
+    "title": "Modular paint rack",
+    "coverUrl": "https://makerworld.bblmw.com/model/f/cover.jpg",
+    "downloadCount": 2048,
+    "designCreator": { "handle": "ExampleStudio" },
+    "designExtension": { "design_pictures": [
+      { "url": "https://makerworld.bblmw.com/model/f/front.jpg", "isRealLifePhoto": 1 },
+      { "url": "https://makerworld.bblmw.com/model/f/side.jpg", "isRealLifePhoto": 1 },
+      { "url": "https://makerworld.bblmw.com/model/f/detail.jpg", "isRealLifePhoto": 1 }
+    ] }
   }
 }

@@ -83,7 +83,6 @@ th, td { vertical-align: middle; }
 tbody tr:hover { background: #f6faf7; }
 a { color: #0a594a; text-decoration-thickness: 1px; text-underline-offset: 2px; font-weight: 650; }
 .model-cell { min-width: 125px; overflow-wrap: anywhere; }
-.badges { display: flex; gap: 4px; flex-wrap: wrap; }
 .badge {
   white-space: nowrap;
   background: var(--tag-bg);
