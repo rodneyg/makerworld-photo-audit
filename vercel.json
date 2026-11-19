@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "",
+  "buildCommand": "mkdir -p site-output/privacy && cp -R site/. site-output/ && cp privacy/index.html site-output/privacy/index.html && cp store/screenshot-1280x800.png site-output/audit-preview.png && cp src/icons/audit-32.png site-output/audit-icon.png",
+  "outputDirectory": "site-output",
+  "rewrites": [
+    { "source": "/privacy", "destination": "/privacy/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/downloads/:file",
+      "headers": [{ "key": "Content-Type", "value": "application/zip" }]
+    }
+  ]
+}

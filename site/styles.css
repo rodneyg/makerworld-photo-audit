@@ -1,0 +1,74 @@
+:root {
+  color-scheme: light;
+  font: 100%/1.5 system-ui, sans-serif;
+  color: #172c28;
+  background: #f4f7f4;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #12604e; text-underline-offset: .2em; }
+a:focus-visible { outline: 3px solid #12604e; outline-offset: 4px; }
+.wrap { width: min(71rem, calc(100% - 4rem)); margin-inline: auto; }
+
+.masthead { border-bottom: 1px solid #d9e3dc; }
+.masthead-inner, .brand, nav { display: flex; align-items: center; gap: .7rem; }
+.masthead-inner { min-height: 4.5rem; justify-content: space-between; }
+.brand { font-weight: 700; }
+nav { gap: 1.4rem; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  padding-block: 3.75rem 2.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4.7vw, 4.1rem);
+  font-weight: 760;
+  line-height: 1.02;
+  letter-spacing: -.065em;
+}
+
+.intro > p { max-width: 26rem; margin: 1.3rem 0 1.6rem; font-size: 1.125rem; }
+.download {
+  display: inline-block;
+  padding: .8rem 1.15rem;
+  border-radius: .5rem;
+  background: #095b49;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.download:hover { background: #083f34; }
+.intro .note { margin: .7rem 0 0; color: #465e56; font-size: .9375rem; }
+
+.preview {
+  margin: 0;
+  padding: .6rem;
+  border: 1px solid #d4e2da;
+  border-radius: .9rem;
+  background: #e5eee8;
+}
+.preview a { display: block; border-radius: .4rem; }
+.preview img { display: block; width: 100%; height: auto; border-radius: inherit; }
+
+.install { border-top: 1px solid #d9e3dc; padding-block: 1.35rem 2.5rem; }
+h2 { margin: 0 0 .5rem; font-size: 1.35rem; letter-spacing: -.02em; }
+ol { margin: 0; padding-left: 1.55rem; }
+li { padding-left: .2rem; margin-block: .3rem; }
+li::marker { color: #12604e; font-weight: 700; }
+code { padding: .1em .25em; border-radius: .25em; background: #e5eee8; font-size: .9375em; }
+
+@media (max-width: 49rem) {
+  .wrap { width: calc(100% - 2.5rem); }
+  .hero { grid-template-columns: 1fr; padding-block: 2.5rem 1.75rem; }
+  nav { gap: .8rem; }
+}
+
+@media (max-width: 23rem) {
+  .brand span { max-width: 9rem; font-size: .9rem; }
+}
